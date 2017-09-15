@@ -3,7 +3,7 @@
         <v-head></v-head>
         <v-sidebar></v-sidebar>
         <div class="content">
-            <v-shouye v-if="showOrHide.isVshowYe"></v-shouye>
+            <v-shouye v-if="isShow.isVshowYe"></v-shouye>
             <transition name="bounce">
                 <router-view></router-view>
             </transition>
@@ -41,22 +41,15 @@ export default {
         vHead, vSidebar, vShouye
     },
     computed: {
-        showOrHide() {
-            // alert(111);
-            if (JSON.parse(sessionStorage.getItem('showOrHide')) == '' || JSON.parse(sessionStorage.getItem('showOrHide')) == 'undefined') {
-                this.$store.state.login.showOrHide.isVshowYe = 0;
-                return this.$store.state.login.showOrHide;
-            } else {
-                this.$store.state.login.showOrHide = JSON.parse(sessionStorage.getItem('showOrHide')) || {};
-                return this.$store.state.login.showOrHide;
-            }
-        }
+        ...mapState({
+            isShow: state => state.login.showOrHide
+        })
     },
     data() {
         return {
-            // showOrHide: {
-            //     isVshowYe: 0
-            // }
+            showOrHide: {
+                isVshowYe: 0
+            }
         }
     }
 }

@@ -135,9 +135,6 @@ export default {
                 this.$http.post('api/merchant/register', this.$store.state.register.register)
                     .then(res => {
                         if (res.data.status == '200') { //注册数据验证通过
-                            // alert(111);
-                            // this.provinces = res.data.result;
-                            // state.login.logoSrc = JSON.parse(sessionStorage.getItem('show_OR_hide')) || {};
                             this.$store.state.login.show_OR_hide.isVshowYe = false; //首次登陆用户不显示首页
                             this.$store.state.login.show_OR_hide.isShowSidebar = true; //只显示通讯录菜单列表
                             this.$router.push({ name: 'contacts' }); //进入通讯录页面
@@ -154,9 +151,6 @@ export default {
                         console.log(error);
                     })
                 console.log(this.$store.state.register.register);
-                // window.sessionStorage('register',JSON.stringify(this.register));
-                // this.$router.push({ name: 'contacts' });
-                //  console.log(this.valueData);
             }
         }
     }

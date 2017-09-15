@@ -119,6 +119,7 @@ const actions = {
                     console.log(state.merchants);
                     if (state.merchants.length == '1') { //只有一个组织
                         console.log(state.merchants[0].type);
+                        
                         if (state.merchants[0].type == '0') { //审核中
                             commit('saveApprovalStatus', {type: state.merchants[0].type, text: '您的申请正在审核中,请您耐心等待~'});
                             window.sessionStorage.setItem('saveApprovalStatus', JSON.stringify(state.approvelType));

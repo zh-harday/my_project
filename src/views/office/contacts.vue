@@ -219,7 +219,6 @@ section {
                     }
                 }
                 >div:nth-child(2) {
-                    >button {}
                     position: absolute;
                     right: 13.5px;
                     top: 13.5px;
@@ -282,6 +281,9 @@ b {
 <script>
 // import { mapState } from 'vuex'
 export default {
+    beforeCreate(){
+        // alert(114);
+    },
     computed: {
         typeText() {
             // alert('contacts');
@@ -298,9 +300,11 @@ export default {
             }
         }
     },
-    // created(){alert(888);},
     data() {
         return {
+            typeText:{
+                type: 1
+            },
             systemDialog: false,
             ind: '',
             // error_01: "/static/img/error/error_01.png/",
@@ -347,36 +351,36 @@ export default {
         }
     },
     methods: {
-        // active(index, item) {
-        //     // console.log(item);
-        //     this.ind = index;
-        //     this.srcContent.src = item.src;
-        //     this.srcContent.name = item.name;
-        //     // this.srcContent.title = item.src;
+        active(index, item) {
+            // console.log(item);
+            this.ind = index;
+            this.srcContent.src = item.src;
+            this.srcContent.name = item.name;
+            // this.srcContent.title = item.src;
 
-        // },
-        // openDialog(formName) {
-        //     let new_form = {
-        //         creditCode: '',
-        //         companyName: '',
-        //         delegate: '',
-        //         address: '',
-        //         edition: ''
-        //     };
-        //     this.form = new_form;
-        //     this.systemDialog = !this.systemDialog;
-        //     //this.$refs[formName].resetFields();
-        // },
-        // submitForm(formName) {
-        //     this.$refs[formName].validate((valid) => {
-        //         if (valid) {
-        //             this.systemDialog = !this.systemDialog;
-        //         } else {
-        //             return false;
-        //             this.$refs[formName].resetFields();
-        //         }
-        //     });
-        // }
+        },
+        openDialog(formName) {
+            let new_form = {
+                creditCode: '',
+                companyName: '',
+                delegate: '',
+                address: '',
+                edition: ''
+            };
+            this.form = new_form;
+            this.systemDialog = !this.systemDialog;
+            //this.$refs[formName].resetFields();
+        },
+        submitForm(formName) {
+            this.$refs[formName].validate((valid) => {
+                if (valid) {
+                    this.systemDialog = !this.systemDialog;
+                } else {
+                    return false;
+                    this.$refs[formName].resetFields();
+                }
+            });
+        }
     },
 }
 </script>

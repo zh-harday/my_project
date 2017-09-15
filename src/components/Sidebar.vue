@@ -27,7 +27,7 @@
                 <el-submenu index="1">
                     <template slot="title" style="height:50px;line-height:50px;" class="title">
                         <img style="margin-top: 18px;display: block;float: left;
-                                                                            margin-right: 7px;" src="/static/img/office.png" />
+                                                                                    margin-right: 7px;" src="/static/img/office.png" />
                         <span>{{title_01}}</span>
                     </template>
                     <el-menu-item index="task" @click="addTab(title1,'/home/task','task')">{{title1}}</el-menu-item>
@@ -37,7 +37,7 @@
                 </el-submenu>
                 <div class="div_el-menu-itemel-submenu__title" @click="addTab(title_02,'/home/assistant','assistant')">
                     <!-- <i style="margin-right:7px;" class="el-icon-menu"></i>
-                                                                                        领投助手 -->
+                                                                                                领投助手 -->
                     <img style="margin-top: 18px;display: block;float: left;margin-right: 7px;" src="/static/img/zhushou.png" />
                     <span index="assistant">{{title_02}}</span>
                     <!-- <router-link to="/home/assistant" index="assistant" @click="addTab(title_02,'/home/assistant','assistant')" >{{title_02}}</router-link> -->
@@ -86,15 +86,15 @@
                     <el-menu-item index="fundDoc" @click="addTab(title18, '/home/fundDoc', 'fundDoc')">{{title18}}</el-menu-item>
                 </el-submenu>
                 <!-- <el-submenu index="7">
-                                                                                        <template slot="title">
-                                                                                            <i class="el-icon-star-on"></i>统计分析</template>
-                                                                                    </el-submenu> -->
+                                                                                                <template slot="title">
+                                                                                                    <i class="el-icon-star-on"></i>统计分析</template>
+                                                                                            </el-submenu> -->
                 <!-- <div class="div_el-menu-itemel-submenu__title">
-                                                        <!-- <i style="margin-right:7px;" class="el-icon-menu"></i>
-                                                                                        统计分析 -->
+                                                                <!-- <i style="margin-right:7px;" class="el-icon-menu"></i>
+                                                                                                统计分析 -->
                 <!-- <img style="margin-top: 18px;display: block;float: left;margin-right: 7px;" src="/static/img/sys_analysis.png" />
-                                                        <span>{{title_07}}</span>
-                                                    </div> -->
+                                                                <span>{{title_07}}</span>
+                                                            </div> -->
                 <el-submenu index="7">
                     <template slot="title">
                         <!-- <i class="el-icon-star-on"></i>统计分析 -->
@@ -160,10 +160,10 @@
                 </el-submenu>
             </el-menu>
             <!-- <el-row>
-                                                                    <el-col :span="24" v-for="(menuItem,index) in theModel" :key="index">
-                                                                        <my-tree :model="menuItem"></my-tree>
-                                                                    </el-col>
-                                                                </el-row> -->
+                                                                            <el-col :span="24" v-for="(menuItem,index) in theModel" :key="index">
+                                                                                <my-tree :model="menuItem"></my-tree>
+                                                                            </el-col>
+                                                                        </el-row> -->
             <!-- <ul id="zTree" class="ztree"></ul> -->
         </div>
     </div>
@@ -242,25 +242,23 @@ export default {
     mounted() {
     },
     computed: {
-        ...mapState({
-            onRoutes(state) {
-                // alert(111);
-                return this.$route.path.replace('/', '');
-            },
-            userName(state) {
-                // alert(222);
-                state.login.userInfor = JSON.parse(sessionStorage.getItem('userInfor')) || {};
-                return state.login.userInfor;
-            },
-            um_id(state) {
-                // alert(333);
-                state.login.logoSrc = JSON.parse(sessionStorage.getItem('merchants')) || {};
-                return state.login.merchants;
-            },
-        }),
+        onRoutes(state) {
+            // alert(111);
+            return this.$route.path.replace('/', '');
+        },
+        userName(state) {
+            // alert(222);
+            this.$store.state.login.userInfor = JSON.parse(sessionStorage.getItem('userInfor')) || {};
+            return this.$store.state.login.userInfor;
+        },
+        um_id(state) {
+            // alert(333);
+            this.$store.state.login.logoSrc = JSON.parse(sessionStorage.getItem('merchants')) || {};
+            return this.$store.state.login.merchants;
+        },
         showOrHide() {
             if (JSON.parse(sessionStorage.getItem('showOrHide')) == '' || JSON.parse(sessionStorage.getItem('showOrHide')) == 'undefined') {
-                // state.login.showOrHide.isVshowYe = 0;
+                this.$store.state.login.showOrHide.isVshowYe = 0;
                 this.$store.state.login.showOrHide.isShowSidebar = 1;
                 return this.$store.state.login.showOrHide;
             } else {

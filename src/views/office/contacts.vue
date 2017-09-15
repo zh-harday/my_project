@@ -245,6 +245,8 @@ section {
                 left: 0;
                 right: 0;
                 margin: auto;
+                width: 340px;
+                height: 273px;
             }
             >div>div {
                 position: absolute;
@@ -253,6 +255,11 @@ section {
                 left: 0;
                 right: 0;
                 margin: auto;
+                width: 500px;
+                height: 100px;
+                font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;
+                color: darkgreen;
+                font-size: 20px;
             }
         }
     }
@@ -281,7 +288,7 @@ b {
 <script>
 // import { mapState } from 'vuex'
 export default {
-    beforeCreate(){
+    beforeCreate() {
         // alert(114);
     },
     computed: {
@@ -302,9 +309,9 @@ export default {
     },
     data() {
         return {
-            typeText:{
-                type: 1
-            },
+            // typeText:{
+            //     type: 1
+            // },
             systemDialog: false,
             ind: '',
             // error_01: "/static/img/error/error_01.png/",
@@ -325,11 +332,11 @@ export default {
                 title: "聚乐新能源集团-研发部总监"
             },
             form: {
-                creditCode: '',
-                companyName: '',
-                delegate: '',
-                address: '',
-                edition: ''
+                creditCode: '', //社会编码
+                companyName: '', //客户名称
+                delegate: '', //法人代表
+                address: '', //详细地址
+                // edition: '' 
             },
             rules: {
                 creditCode: [
@@ -345,7 +352,7 @@ export default {
                     { required: true, message: '请输入详细地址', trigger: 'blur' }
                 ],
                 edition: [
-                    { required: true, message: '请选择系统版本', trigger: 'change' }
+                    { required: true, message: '请选择申请类型', trigger: 'change' }
                 ]
             },
         }
@@ -374,10 +381,25 @@ export default {
         submitForm(formName) {
             this.$refs[formName].validate((valid) => {
                 if (valid) {
+                    console.log(this.form);
+                    this.$http.post('api/merchant/apply', {
+                        "id": "50a21234735f4e34a5da5dadf47ff9b5",
+                        "socialCode": this.form.creditCode,
+                        "merchantName": this.form.companyName,
+                        "address": this.form.address,
+                        "merchantTypeId": "1", 
+                        "representative": this.form.delegate, //法人代表
+                    })
+                        .then(res => {
+                            console.log(res);
+                        })
+                        .catch(ero => {
+
+                        })
                     this.systemDialog = !this.systemDialog;
                 } else {
-                    return false;
                     this.$refs[formName].resetFields();
+                    return false;
                 }
             });
         }

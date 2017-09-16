@@ -18,18 +18,15 @@ const state = {
     CardBox: loginCard,
     showOrHide: {
         isVshowYe: true, //是否显示首页
-        isShowSidebar: false, //是否只显示通讯录菜单列表
+        isShowSidebar: false, //是只否显示通讯录菜单列表
+        // isShowSidebar: true,
     },
-    approvelType: { //审核状态
+    approvelType: { //企业审核状态
         type: '',
         text: ''
-    }, //企业审核状态
+    },
 }
-// const mutations = {
-//     [types.SET_TITLELIST](state, targetName) {
-//         state.TitleList = targetName
-//     }
-// }
+
 const mutations = {
     addTab(state, targetName) {
         let obj = {};
@@ -69,11 +66,11 @@ const mutations = {
     changeLoginCard(state) {
         state.CardBox = loginCard;
     },
-    saveApprovalStatus(state,approvelType) { //保存审核状态
+    saveApprovalStatus(state, approvelType) { //保存审核状态
         state.approvelType.type = approvelType.type;
         state.approvelType.text = approvelType.text;
     },
-    showOrHide(state, isShouye){ //是否显示首页和通讯录菜单
+    showOrHide(state, isShouye) { //是否显示首页和通讯录菜单
         state.showOrHide.isVshowYe = isShouye.isVshowYe;
         state.showOrHide.isShowSidebar = isShouye.isShowSidebar;
     },
@@ -90,11 +87,11 @@ const actions = {
     loginAPI({
         commit,
         state
-    }, userPwd) { //send login API
+    }, user) { //send login API
         // console.log(userPwd);
-        userPwd.self.$http.post('api/user/login', {
-            number: userPwd.name,
-            pass: userPwd.pwd
+        user.self.$http.post('api/user/login', {
+            number: user.name,
+            pass: user.pwd
             // number: "010",
             // pass: "e10adc3949ba59abbe56e057f20f883e"
         }).then(data => {
@@ -103,7 +100,6 @@ const actions = {
                 alert(data.data.message);
             } else if (data.data.status == '156') { //用户名或密码不正确
                 alert(data.data.message);
-                console.log(data.data.status);
                 console.log(data.data.message);
                 return;
             } else if (data.data.status == '200') { //登录成功
@@ -119,35 +115,29 @@ const actions = {
                     console.log(state.merchants);
                     if (state.merchants.length == '1') { //只有一个组织
                         console.log(state.merchants[0].type);
-                        
+
                         if (state.merchants[0].type == '0') { //审核中
-                            commit('saveApprovalStatus', {type: state.merchants[0].type, text: '您的申请正在审核中,请您耐心等待~'});
+                            commit('saveApprovalStatus', { type: state.merchants[0].type, text: '您的申请正在审核中,请您耐心等待~' });
                             window.sessionStorage.setItem('saveApprovalStatus', JSON.stringify(state.approvelType));
-                            
-                            commit('showOrHide', {isVshowYe: 0, isShowSidebar: 1 });
-                            window.sessionStorage.setItem('showOrHide', JSON.stringify(state.showOrHide));
-                        
+
                         } else if (state.merchants[0].type == '1') { //审核通过
 
-                            commit('saveApprovalStatus', {type: state.merchants[0].type, text: '审核通过'});
-                            window.sessionStorage.setItem('saveApprovalStatus', JSON.stringify(state.approvelType));
-                        
-                        } else if (state.merchants[0].type == '2') { //审核失败
-                            // alert(state.merchants[0].type);
-                            commit('saveApprovalStatus', {type: state.merchants[0].type, text: '太遗憾了,您的审核未通过,再接再厉哦~'});
-                            window.sessionStorage.setItem('saveApprovalStatus', JSON.stringify(state.approvelType));
-                        
-                            commit('showOrHide', {isVshowYe: 0, isShowSidebar: 1 });
-                            window.sessionStorage.setItem('showOrHide', JSON.stringify(state.showOrHide));
-                        } else if (state.merchants[0].type == '3') { //已注册但未开通试用权限
-                            // alert(state.merchants[0].type);
-                            commit('saveApprovalStatus', {type: state.merchants[0].type, text: '恭喜您注册成功,请您点击右上角申请开通使用权限~'});
+                            commit('saveApprovalStatus', { type: state.merchants[0].type, text: '审核通过' });
                             window.sessionStorage.setItem('saveApprovalStatus', JSON.stringify(state.approvelType));
 
-                            commit('showOrHide', {isVshowYe: 0, isShowSidebar: 1 });
-                            window.sessionStorage.setItem('showOrHide', JSON.stringify(state.showOrHide));
+                        } else if (state.merchants[0].type == '2') { //审核失败
+                            // alert(state.merchants[0].type);
+                            commit('saveApprovalStatus', { type: state.merchants[0].type, text: '太遗憾了,您的审核未通过,再接再厉哦~' });
+                            window.sessionStorage.setItem('saveApprovalStatus', JSON.stringify(state.approvelType));
+
+                        } else if (state.merchants[0].type == '3') { //已注册但未开通试用权限
+                            // alert(state.merchants[0].type);
+                            commit('saveApprovalStatus', { type: state.merchants[0].type, text: '恭喜您注册成功,请您点击右上角申请开通使用权限~' });
+                            window.sessionStorage.setItem('saveApprovalStatus', JSON.stringify(state.approvelType));
                         };
-                        if(state.merchants[0].type != '1'){ //还未审核通过
+                        if (state.merchants[0].type != '1') { //还未审核通过
+                            commit('showOrHide', { isVshowYe: 0, isShowSidebar: 1 });
+                            window.sessionStorage.setItem('showOrHide', JSON.stringify(state.showOrHide));
                             userPwd.self.$router.push({ //只显示通讯录菜单列表
                                 name: 'contacts'
                             });

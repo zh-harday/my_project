@@ -3,7 +3,7 @@
         <v-head></v-head>
         <v-sidebar></v-sidebar>
         <div class="content">
-            <v-shouye v-if="isShow.isVshowYe"></v-shouye>
+            <v-Tab></v-Tab>
             <transition name="bounce">
                 <router-view></router-view>
             </transition>
@@ -32,18 +32,12 @@
 </style>
 
 <script>
-import { mapState } from 'vuex'
 import vHead from './Header.vue';
 import vSidebar from './Sidebar.vue';
-import vShouye from '../views/home/homeTab.vue';
+import VTab from '../views/home/homeTab.vue';
 export default {
     components: {
-        vHead, vSidebar, vShouye
-    },
-    computed: {
-        ...mapState({
-            isShow: state => state.login.showOrHide
-        })
+        vHead, vSidebar, VTab
     },
     data() {
         return {

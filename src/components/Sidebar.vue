@@ -27,7 +27,7 @@
                 <el-submenu index="1">
                     <template slot="title" style="height:50px;line-height:50px;" class="title">
                         <img style="margin-top: 18px;display: block;float: left;
-                                                                                    margin-right: 7px;" src="/static/img/office.png" />
+                                                                                                    margin-right: 7px;" src="/static/img/office.png" />
                         <span>{{title_01}}</span>
                     </template>
                     <el-menu-item index="task" @click="addTab(title1,'/home/task','task')">{{title1}}</el-menu-item>
@@ -36,11 +36,10 @@
                     <el-menu-item index="messageShow" @click="addTab(title4,'/home/messageShow','messageShow')">{{title4}}</el-menu-item>
                 </el-submenu>
                 <div class="div_el-menu-itemel-submenu__title" @click="addTab(title_02,'/home/assistant','assistant')">
-                    <!-- <i style="margin-right:7px;" class="el-icon-menu"></i>
-                                                                                                领投助手 -->
+                    <!-- <i style="margin-right:7px;" class="el-icon-menu"></i> -->
                     <img style="margin-top: 18px;display: block;float: left;margin-right: 7px;" src="/static/img/zhushou.png" />
                     <span index="assistant">{{title_02}}</span>
-                    <!-- <router-link to="/home/assistant" index="assistant" @click="addTab(title_02,'/home/assistant','assistant')" >{{title_02}}</router-link> -->
+                    <!-- <router-link to="/home/assistant" index="assistant" @click="addTab(title_02,'/home/assistant','assistant')">{{title_02}}</router-link> -->
                 </div>
                 <el-submenu index="3">
                     <template slot="title">
@@ -48,7 +47,6 @@
                         <img style="margin-top: 18px;display: block;float: left;margin-right: 7px;" src="/static/img/project.png" />
                         <span>{{title_03}}</span>
                     </template>
-
                     <el-menu-item index="projectPool" @click="addTab(title5,'/home/projectPool','projectPool')">{{title5}}</el-menu-item>
                     <el-menu-item index="preProject" @click="addTab(title6,'/home/preProject','preProject')">{{title6}}</el-menu-item>
                     <el-menu-item index="aftProject" @click="addTab(title7,'/home/aftProject','aftProject')">{{title7}}</el-menu-item>
@@ -85,16 +83,6 @@
                     <el-menu-item index="projectsDoc" @click="addTab(title17, '/home/projectsDoc', 'projectsDoc')">{{title17}}</el-menu-item>
                     <el-menu-item index="fundDoc" @click="addTab(title18, '/home/fundDoc', 'fundDoc')">{{title18}}</el-menu-item>
                 </el-submenu>
-                <!-- <el-submenu index="7">
-                                                                                                <template slot="title">
-                                                                                                    <i class="el-icon-star-on"></i>统计分析</template>
-                                                                                            </el-submenu> -->
-                <!-- <div class="div_el-menu-itemel-submenu__title">
-                                                                <!-- <i style="margin-right:7px;" class="el-icon-menu"></i>
-                                                                                                统计分析 -->
-                <!-- <img style="margin-top: 18px;display: block;float: left;margin-right: 7px;" src="/static/img/sys_analysis.png" />
-                                                                <span>{{title_07}}</span>
-                                                            </div> -->
                 <el-submenu index="7">
                     <template slot="title">
                         <!-- <i class="el-icon-star-on"></i>统计分析 -->
@@ -160,10 +148,10 @@
                 </el-submenu>
             </el-menu>
             <!-- <el-row>
-                                                                            <el-col :span="24" v-for="(menuItem,index) in theModel" :key="index">
-                                                                                <my-tree :model="menuItem"></my-tree>
-                                                                            </el-col>
-                                                                        </el-row> -->
+                                                                                            <el-col :span="24" v-for="(menuItem,index) in theModel" :key="index">
+                                                                                                <my-tree :model="menuItem"></my-tree>
+                                                                                            </el-col>
+                                                                                        </el-row> -->
             <!-- <ul id="zTree" class="ztree"></ul> -->
         </div>
     </div>
@@ -257,9 +245,9 @@ export default {
             return this.$store.state.login.merchants;
         },
         showOrHide() {
-            if (JSON.parse(sessionStorage.getItem('showOrHide')) == '' || JSON.parse(sessionStorage.getItem('showOrHide')) == 'undefined') {
-                this.$store.state.login.showOrHide.isVshowYe = 0;
-                this.$store.state.login.showOrHide.isShowSidebar = 1;
+            if (JSON.parse(sessionStorage.getItem('showOrHide')) == null) {
+                this.$store.state.login.showOrHide.isVshowYe = 1;
+                this.$store.state.login.showOrHide.isShowSidebar = 0;
                 return this.$store.state.login.showOrHide;
             } else {
                 this.$store.state.login.showOrHide = JSON.parse(sessionStorage.getItem('showOrHide')) || {};

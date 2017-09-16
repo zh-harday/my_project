@@ -23,16 +23,17 @@ module.exports = {
     },
     dev: {
         env: require('./dev.env'),
-        port: 8080,
+        port: 8082,
         autoOpenBrowser: true,
         assetsSubDirectory: 'static',
         assetsPublicPath: '/',
         proxyTable: {
             '/api':{
-                target:'http://192.168.0.198:9091',
-                // target:'http://100.64.33.181:9091', //外网IP
+                // target:'http://192.168.0.198:9091',
+                // target:'http://100.64.33.181:8090', //外网IP
                 // target:'http://192.168.0.122:9091',
                 // target:'http://192.168.0.117:9091',
+                target:'http://zhqwjmw.eicp.net',
                 changeOrigin:true,
                 pathRewrite:{
                     '/api':''

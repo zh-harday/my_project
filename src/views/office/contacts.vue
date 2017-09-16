@@ -293,11 +293,10 @@ export default {
     },
     computed: {
         typeText() {
-            // alert('contacts');
-            if (JSON.parse(sessionStorage.getItem('saveApprovalStatus')) == '' || JSON.parse(sessionStorage.getItem('saveApprovalStatus')) == 'undefined') {
+            if ( JSON.parse(sessionStorage.getItem('saveApprovalStatus')) == null ) {
                 // alert(1111);
-                this.$store.state.login.approvelType.type = '3';
-                this.$store.state.login.approvelType.text = '恭喜您注册成功,请您点击右上角申请开通使用权限~';
+                this.$store.state.login.approvelType.type = '';
+                this.$store.state.login.approvelType.text = '您好，请先注册~';
                 // console.log(state.login.approvelType);
                 return this.$store.state.login.approvelType;
             } else {

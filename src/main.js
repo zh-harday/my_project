@@ -26,12 +26,14 @@ Vue.use(ElementUI);
 
 Vue.prototype.$http = axios;
 // Vue.prototype.api = process.env.NODE_ENV === 'production'? "" : "/api";
-Vue.prototype.$http = axios.create();
+// Vue.prototype.$http = axios.create();
 // Vue.prototype.$http.defaults.baseURL = 'http://192.168.0.198:9091';
+// Vue.prototype.$http.defaults.baseURL = 'http://zhqwjmw.eicp.net/';
 // Vue.prototype.$http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 // Vue.prototype.$http = axios.create({
 
 //     // baseURL: 'http://192.168.0.146:9091',
+//     baseURL: 'http://zhqwjmw.eicp.net',
 //     headers: {
 //         'Content-Type': 'application/x-www-form-urlencoded',
 //         // "Access-Control-Allow-Headers": "X-Custom-Header",

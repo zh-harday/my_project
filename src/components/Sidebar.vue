@@ -189,7 +189,6 @@ export default {
         //     });
     },
     created() {
-        // alert(222)
         // this.$store.state.login.merchants = JSON.parse(sessionStorage.getItem('merchants')) || {};
         // // console.log(this.$store.state.login.merchants[0].um_id);
         // this.$http.post('api/user/findResourceByUid', { //请求用户权限列表数据
@@ -312,52 +311,52 @@ export default {
                     "icon": null,  //对应图标
                     "sort": 6,     //排序
                     "parentId": "0", //父id
-                    "type": "0",    //按钮类型
+                    "type": "0", //按钮类型
                     "code": "userinfo,userupdate",//标识
                     "target": "_self",
                     "onClick": "addTab()",
                     "description": null,   //描述
                     "status": "0",   //状态
                     "createDate": null,
-                    "merchantId": "11",   //商户id
+                    "merchantId": "11", //商户id
                     "versionRecord": 1502260340000
                 },
                 {
                     // "open": true,
-                    "id": 2,  // 菜单id
+                    "id": 2, // 菜单id
                     "pId": 0,
                     "name": "一级菜单", //菜单标题
                     "common": "0",        //是否为公共
                     "icon": null,  //对应图标
                     "sort": 6,     //排序
                     "parentId": "0", //父id
-                    "type": "0",    //按钮类型
-                    "code": "userinfo,userupdate",//标识
-                    "url": null,     //类型
-                    "description": null,   //描述
-                    "status": "0",   //状态
+                    "type": "0", //按钮类型
+                    "code": "userinfo,userupdate", //标识
+                    "url": null, //类型
+                    "description": null, //描述
+                    "status": "0", //状态
                     "createDate": null,
-                    "merchantId": "11",   //商户id
+                    "merchantId": "11", //商户id
                     "versionRecord": 1502260340000
                 },
                 {
                     // "open": true,
-                    "id": 21,  // 菜单id
+                    "id": 21, // 菜单id
                     "pId": 2,
                     "name": "子菜单", //菜单标题
                     // "url": "/home/projectPool",     //类型
-                    "path": "/home/projectPool",     //类型
+                    "path": "/home/projectPool", //类型
                     "target": "_self",
-                    "common": "0",        //是否为公共
-                    "icon": null,  //对应图标
-                    "sort": 6,     //排序
+                    "common": "0", //是否为公共
+                    "icon": null, //对应图标
+                    "sort": 6, //排序
                     "parentId": "0", //父id
-                    "type": "0",    //按钮类型
-                    "code": "userinfo,userupdate",//标识
-                    "description": null,   //描述
-                    "status": "0",   //状态
+                    "type": "0", //按钮类型
+                    "code": "userinfo,userupdate", //标识
+                    "description": null, //描述
+                    "status": "0", //状态
                     "createDate": null,
-                    "merchantId": "11",   //商户id
+                    "merchantId": "11", //商户id
                     "versionRecord": 1502260340000
                 }
             ],
@@ -450,7 +449,6 @@ export default {
                 url: url,
                 name: name
             })
-            // alert(222)
         }
     }
 }
@@ -459,12 +457,12 @@ export default {
 <style lang="less" scoped>
 .ztree * {
     font-size: 10pt;
-    font-family: "Microsoft Yahei", Verdana, Simsun, "Segoe UI Web Light", "Segoe UI Light", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial
+    font-family: "Microsoft Yahei", Verdana, Simsun, "Segoe UI Web Light", "Segoe UI Light", "Segoe UI Web Regular", "Segoe UI", "Segoe UI Symbol", "Helvetica Neue", Arial;
 }
 
 .ztree li ul {
     margin: 0;
-    padding: 0
+    padding: 0;
 }
 
 .ztree li {
@@ -474,20 +472,19 @@ export default {
 .ztree li a {
     width: 200px;
     height: 30px;
-    padding-top: 0px;
+    padding-top: 0;
 }
-
 .ztree li a:hover {
     text-decoration: none;
     background-color: #E7E7E7;
 }
 
 .ztree li a span.button.switch {
-    visibility: hidden
+    visibility: hidden;
 }
 
 .ztree.showIcon li a span.button.switch {
-    visibility: visible
+    visibility: visible;
 }
 
 .ztree li a.curSelectedNode {
@@ -516,12 +513,12 @@ export default {
 
 .ztree li span.button.switch.level0 {
     width: 20px;
-    height: 20px
+    height: 20px;
 }
 
 .ztree li span.button.switch.level1 {
     width: 20px;
-    height: 20px
+    height: 20px;
 }
 
 .ztree li span.button.noline_open {
@@ -548,7 +545,7 @@ export default {
     padding: 0 20px;
     cursor: pointer;
     position: relative;
-    transition: border-color .3s, background-color .3s, color .3s;
+    transition: border-color 0.3s, background-color 0.3s, color 0.3s;
     box-sizing: border-box;
     white-space: nowrap;
     &:hover {
@@ -580,7 +577,6 @@ export default {
     overflow: scroll;
     overflow-x: hidden;
 }
-
 
 .portrait-top {
     width: 82px;
